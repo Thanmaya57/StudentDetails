@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgba(202, 168, 125, 0.776);
+        }
+        section{
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 150vh;
+            background-size: cover;
+        }
+        img{
+            width: 302px;
+            height: 106px;
+        }
+        
+        #form-box1{
+            display: block;
+            text-align: center;
+            background-color: rgba(219, 135, 105, 0.781);
+            width: 396px;
+            height: 550px;
+            margin: 50px auto;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(131, 131, 131, 0.666);
+
+        }
+        
+        input{
+            width: 364px;
+            height: 54px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+        }
+        input::placeholder{
+            color: #9ea1a3;
+            font-size: 15px;
+        }
+        input:focus{
+            border: 1px solid #1877f2;
+            outline: 2px solid #61caff67;
+        }
+        #findstd{
+            background-color: #1877f2;
+            width: 364px;
+            height: 54px;
+            border: 1px solid #1877f2;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+
+        }
+        #login:hover{
+            background-color: #1053ab;
+            border: 1px solid #1877f2;
+             transition: 0.15s;
+        }
+        
+        #goback{
+            background-color: #619c55c1;
+            width: 193px;
+            height: 48px;
+            border: 1px solid #42b72a;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            transition: 0.15s;
+        }
+        #goback:hover{
+            background-color: #6a9b60be;
+            border: 1px solid #669b5bb5;
+            transition: 0.15s;
+        }
+
+    </style>
+</head>
+<body>
+<div id="form-box1">
+    <h1 style="color: coral; text-align: center;">Get Student by Id</h1>
+    <form  action="stdById.jsp">
+        <input type="text" name="sid" placeholder="Student ID">
+        <button id="findstd" style="color: aquamarine;"> Find Student</button>
+    </form><br><br><br>
+    <h2>${std}</h2>
+    <form  action="main.jsp">
+        <button id="goback" style="color: chocolate; align-items: center;">Go back to home</button>
+    </form>
+</div>
+</body>
+</html>
