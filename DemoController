@@ -1,0 +1,95 @@
+package com.example.springloginform;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+public class Democontroller {
+	@Autowired
+	StudentRepo repo;
+
+	@RequestMapping("home")
+	String home()
+	{
+		return "main.jsp";
+	}
+
+	@RequestMapping("addStd")
+
+	String addStudent(Student s)
+	{
+		repo.save(s);
+		return "main.jsp";
+	}
+
+	@RequestMapping("stdById")
+	String stdById(HttpSession h1,Integer sid)
+	{
+		System.out.println(sid);
+		Student s1=repo.findById(sid).orElse(null);
+		System.out.println(s1);
+		if(s1!=null)
+		{
+			h1.setAttribute("std",s1);
+		}
+		else
+		{
+			try {
+				throw new ResourceNotFound();
+			}
+			catch(Exception e){
+				h1.setAttribute("std", e.getMessage());
+			}
+		}
+		return "main.jsp";
+
+	}
+	@RequestMapping("stdByEmail")
+	String stdByEmail(HttpSession h2,String email)
+	{     System.out.println(email);
+		Student s=repo.findByEmail1(email);
+		h2.setAttribute("email", s);
+		System.out.println(s);
+		if(s!=null)
+		{
+			h2.setAttribute("email",s);
+		}
+		else
+		{
+			try {
+				throw new ResourceNotFound();
+			}
+			catch(Exception e){
+				h2.setAttribute("email", e.getMessage());
+			}
+		}
+		return "stdByEmail.jsp";
+	}
+	
+	
+	@RequestMapping("stdByBatchCode")
+	String stdByBatchCode(HttpSession h3,String batchcode)
+	{
+		Student s2=repo.findByBatchCode(batchcode);
+		h3.setAttribute("batchCode", s2);
+		System.out.println(s2);
+		if(s2!=null)
+		{
+			h3.setAttribute("batchCode",s2);
+		}
+		else
+		{
+			try {
+				throw new ResourceNotFound();
+			}
+			catch(Exception e){
+				h3.setAttribute("batchCode", e.getMessage());
+			}
+		}
+		return "stdByBatchCode.jsp";	
+	}
+}
